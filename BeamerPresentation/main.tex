@@ -1,0 +1,333 @@
+\documentclass[12pt,aspectratio=169]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\setbeamertemplate{footline}[frame number] 
+
+\author[mau.ap.ribeiro@gmail.com]{Mauricio A. Ribeiro}
+\title[Ribeiro, M. A.]{Breve introdução Sistemas Dinâmicos e suas principais métricas}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{UTFPR-PG} 
+\logo{\includegraphics[scale=0.05]{logo}} 
+\institute[UTFPR-PG]{Universidade Tecnológica Federal do Paraná - Campus Ponta Grossa} 
+%\date{} 
+%\subject{} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% DIVISÃO DOS TÓPICOS %%%%%%%%%%%%%%%%%%%%%%%%%
+% EGMON: 
+% Introdução, E a Humanidade inventa o Capitalismo, Acumulando Capital e Revolucionando a Indústria, Competição Capitalista e Barbárie Humana, Uma alternativa ao Capitalismo
+%
+% WASHINGTON:
+% Concorrência e Monopólio, A Crise: Superprodução de Mercadoria e Imperialismo, Mas, o que é realmente Socialismo?, Tentaram, mas não conseguiram
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+\section{Breve introdução Sistemas Dinâmicos}
+\begin{frame}{Ferramental mais utilizado para analise}
+\begin{itemize}
+    \item Sistemas dinâmicos são sistemas fora do equilíbrio, caracterizados por estados que mudam com o tempo. São usados para modelar e fazer previsões de sistemas físicos, biológicos, financeiros, etc.
+    
+    \item Para definir um sistema dinâmico precisamos de três ingredientes:
+    \begin{itemize}
+        \item Espaço de estados
+        \item Equações de movimento
+        \item Medida de distância 
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{Discreto:}
+$x_{n+1}=f(x_n)$
+\end{block}
+\begin{block}{ Contínuos:}
+$\dot{x}=f(x)$
+\end{block}
+\begin{block}{ Campos:}
+$\frac{\partial\phi(x,t)}{\partial t}=D[\phi(x,t)]+\psi(x,t)$
+\end{block}
+ \column{0.5\textwidth}
+\begin{block}{  Autômato Celular:}
+$a^{i}_{n+1}= F[\{a^i_n\}_{j\in U_i}]$
+\end{block}
+\begin{block}{ Redes Complexas: }
+$a^{i}_{n+1} = F[\{a^{j}_{n}\}_{j \in V_i}]$
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{}
+Sistemas Lineares e Não Lineares
+\end{block}
+\begin{block}{}
+Conservativos e Não Conservativos
+\end{block}
+\begin{block}{}
+Determinísticos e Probabilísticos
+\end{block}
+ \column{0.5\textwidth}
+\begin{block}{}
+Autômantos e não autômatos
+\end{block}
+\begin{block}{}
+Com retardo e não retardo
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+
+
+\section{Oscilador de Duffing}
+\begin{frame}{Explorar dois exemplos}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{Oscilador de Duffing}
+\begin{eqnarray}
+\ddot{x}+\delta\dot{x}+\alpha x+\beta x^3 = f_0cos(\omega t)
+\end{eqnarray}
+\begin{itemize}
+    \item $\alpha =1$, $\beta=1$, $\delta=0.3$, $\omega=1.0$ e $f_0 \in [0,5.0]$
+\end{itemize}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Análise}
+\begin{itemize}
+    \item Analisar o máximo das séries temporais (Diagrama de Bifurcação) 
+    \item Comportamento de duas condições iniciais próximas (Expoente de Lyapunov)
+    \item Comportamento quando a interseção de planos ($h_p=\frac{2\pi n}{\omega}$) 
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+\subsection{Diagrama de Bifurcação}
+\begin{frame}{Diagrama de Bifurcação}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{FIGURAS/bifur.eps} 
+\caption{Diagrama de Bifurcação}
+\label{fig:01}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Diagrama de Bifurcação}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{FIGURAS/bifur2.eps} 
+\caption{Diagrama de Bifurcação}
+\label{fig:02}
+\end{figure}
+\end{frame}
+
+\subsection{Seção de Poincaré}
+\begin{frame}{Seção de Poincaré}
+\begin{itemize}
+    \item Técnica permite transformar um sistema dinâmico contínuo no tempo em um sistema discreto.
+    \item Dado um sistema de dimensão $n$ com órbitas periódicas em seu espaço de fase, a seção de Poincaré diminui a dimensão em $n-1$
+    \item Sendo determinada realizando cortes perpendiculares as trajetórias ao espaço de fase e tomando somente os pontos que interceptam essa seção.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Seção de Poincaré}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.78\textwidth]{FIGURAS/poincare.eps} 
+\caption{Mapas de Fase e Seção de Poincaré}
+\label{fig:03}
+\end{figure}
+\end{frame}
+
+
+\subsection{Expoente de Lyapunov}
+\begin{frame}
+\begin{columns}
+\column{0.4\textwidth}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{FIGURAS/lyapunov.png} 
+\caption{Distancia entre trajetórias}
+\label{fig:03}
+\end{figure}
+\column{0.6\textwidth}
+\begin{eqnarray}
+\lambda = \frac{1}{t_n-t_0}\sum^{n}_{i=1}ln\left[ \frac{\delta(t_i)}{\delta_0} \right]
+\end{eqnarray}
+\begin{block}{Se dois pontos iniciais}
+\begin{itemize}
+    \item Próximos convergem para um atrator ($\lambda < 0$)
+    \item Se a distância entre eles se mantém constante ($\lambda = 0$)
+    \item Se a distância se afastam exponencialmente ($\lambda > 0$) o sistema é sensível.
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.78\textwidth]{FIGURAS/Lyapunov.eps} 
+\caption{Mapas de Fase e Seção de Poincaré}
+\label{fig:03}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.78\textwidth]{FIGURAS/Lyapunov2.eps} 
+\caption{Mapas de Fase e Seção de Poincaré}
+\label{fig:03}
+\end{figure}
+\end{frame}
+
+\subsection{Teste 0-1}
+\begin{itemize}
+    \item O teste 01 é aplicado em uma série temporal;
+    \item Estima o parâmetro $K_c$
+    \begin{equation} \label{eq:08t01} 
+p\left(n,\bar{c}\right)=\sum _{j=0}^{n}x\left(j\right)\cos \left(j\bar{c}\right)  
+\end{equation} 
+\begin{equation} \label{eq:09t01} 
+q\left(n,\bar{c}\right)=\sum _{j=0}^{n}x\left(j\right)\sin \left(j\bar{c}\right)  
+\end{equation} 
+\noindent onde $\hat{c}\in \left(0,\pi \right)$ são constantes. E $p\left(n,\hat{c}\right)$ e $q\left(n,\hat{c}\right)$ é descrito por: 
+
+\begin{equation} \label{eq:10t01} 
+M(n,c)={\mathop{\lim }\limits_{n\to \infty }} \frac{1}{N} \sum _{j=1}^{N}\left[\left(p(j+n,\bar{c})-p(j,\bar{c})\right)^{2} +\left(q(j+n,\bar{c})-q(j,\bar{c})\right)^{2} \right]  
+\end{equation} 
+\end{itemize}
+
+\begin{frame}{}
+\noindent onde $n=1,2,...,N$ e definimos o \textit{$K_{c}$} em um tempo longo:
+\begin{equation} \label{eq:11t01} 
+K_{c} =\frac{cov\left(Y,M(\bar{c})\right)}{\sqrt{var(Y)var(M(\bar{c}))} }  
+\end{equation} 
+\noindent logo $M(\bar{c})=\left[M(1,\bar{c}),M(2,\bar{c}),\ldots ,M(n_{\max } ,\bar{c})\right]$ and  $Y=\left[1,2,\dots ,n_{max}\right]$.
+Dado dos valores $x$ e $y$, a covariancia ${cov \left(x,y\right)\ }$ e variancia ${var \left(x\right)\ }$, of $n_{max}$ elementos, são definidos:
+\begin{equation} \label{eq:012t01} 
+\begin{array}{l} {cov\left(x,y\right)=\frac{1}{n_{\max } } \sum _{n=1}^{n_{\max } }\left(x\left(n\right)-\bar{x}\right)\left(y\left(n\right)-\bar{y}\right) } \\ {var\left(x\right)=cov\left(x,x\right)} \end{array} 
+\end{equation}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+    \item Os valores dos parâmetro $K_c$  é obtido por  Eq.\ref{eq:11t01}.
+    \begin{itemize}
+        \item Se $K_{c} = 0$  o sistema é periódico.
+        \item Se $K_{c} = 1$ o sistema é caótico.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}{}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{FIGURAS/Zero1.eps} 
+\caption{Diagrama de Bifurcação e Teste 01}
+\label{fig:03}
+\end{figure}
+\end{frame}
+
+
+
+\section{Outro exemplo}
+\subsection{Microscopia de força atômica}
+\begin{frame}[fragile]
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{FIGURAS/EsquemaAFM.png}
+    \caption{Representação do esquema da Microscopia de Força Atômica.\href{https://www.youtube.com/watch?v=8gCf1sEn0UU}{ Click aqui para o exemplo 1}. \href{https://www.youtube.com/watch?v=s6KqJS1GZNE}{Clique aqui para o exemplo 2}}
+    \label{fig:esquemaAFM}
+\end{figure}
+\end{frame}
+
+
+\begin{block}{Equações diferenciais fracionárias}
+\begin{eqnarray}
+\mathcal{D}^{q_1}x_1(\tau)&=&x_2 \\ \nonumber
+\mathcal{D}^{q_2}x_2(\tau)&=&-x_1-d_1 x_2+B_1+ \frac{C_1}{(1-x_{1}-\zeta\sin(\Omega \tau))^8}+\frac{C2}{(1-x_{1}-\zeta\sin(\Omega \tau))^2} \\ \nonumber
+&-&\frac{p}{(1-x_{1}-\zeta\sin(\Omega \tau))^8}\mathcal{D}^{q_3}x_3(\tau)+\zeta\Omega^2E_1\sin(\Omega \tau) \\ \nonumber
+\mathcal{D}^{q_3}x_3(\tau)&=&x_2 \\ \nonumber
+\end{eqnarray}
+\end{block}
+\begin{block}{}
+\centering
+$0<q=(q_1,q_2,q_3)\le 1 \Leftrightarrow 0<q_3\le 1$
+\end{block}
+\end{frame}
+
+\begin{frame}{Resultados Numéricos- Ordem inteira - $q_3=1$}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{FIGURAS/novobifp.eps}
+\caption{Diagramas de Bifurcação para $q=(1,~1,~1)$ e $p\in[0.001,0.05]$. (a) $x_1$ e (b)  $x_2$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{}
+    \begin{figure}[!ht]
+\centering
+\resizebox{\columnwidth}{!}{\includegraphics{FIGURAS/t01AeB.eps}}
+\caption{Teste 0-1.(a) é $K_c$ do deslocamento $x_1$ e (b) é $K_c$ da $\dot{x}$. }
+\label{fig:5}       % Give a unique label
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{FIGURAS/lyapunovp.eps}
+\caption{Expoente de Lyapunov}
+\end{figure}
+\column{0.45\textwidth}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{FIGURAS/lyapunovZOOM.eps}
+\caption{Expoente de Lyapunov considerando $\eta \times p $}
+\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}{}
+\begin{enumerate}
+    \item Ribeiro, M. A., Tusset, A. M., Lenz, W. B., Kirrou, I., Balthazar, J. M. (2021). Numerical analysis of fractional dynamical behavior of Atomic Force Microscopy. The European Physical Journal Special Topics, 230(18), 3655-3661.
+    \item Ribeiro, M. A., Balthazar, J. M., Lenz, W. B., Rocha, R. T., Tusset, A. M. (2020). Numerical exploratory analysis of dynamics and control of an atomic force microscopy in tapping mode with fractional order. Shock and Vibration, 2020.
+    \item Balthazar, J. M., Tusset, A. M., Ribeiro, M. A., et. al, (2021). Sistemas dinâmicos e mecatrônicos-Volume 1: Teoria e aplicação de controle. Editora Blucher.
+\end{enumerate}
+    
+\end{frame}
+
+\end{document}
